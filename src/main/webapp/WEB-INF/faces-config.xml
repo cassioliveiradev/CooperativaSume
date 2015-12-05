@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <!--Aponta para a fabrica de exceptionhandler gerenciado pelo JSF, que trata exceções lançadas-->
+    <factory>
+        <exception-handler-factory>
+            br.edu.ifpb.monteiro.ads.infosaude.atendimento.util.jsf.JsfExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+    
+    <application>
+        <!--Listener que varre a árvore de componentes do JSF e procura componentes com inputs inválidos.-->
+        <system-event-listener>
+            <system-event-listener-class>br.edu.ifpb.monteiro.ads.infosaude.atendimento.util.jsf.ValidationListener</system-event-listener-class>
+            <system-event-class>javax.faces.event.PreRenderViewEvent</system-event-class>
+        </system-event-listener>
+        
+        <!-- Set the target of file .properties with the strings to the view 
+        (internationalization). -->
+        <resource-bundle>
+            <base-name>i18n.mensagens</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        
+        <!-- Set default language for messages of bean Validation and others components 
+        around the system. -->
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+        </locale-config>
+        
+    </application>
+    
+</faces-config>
