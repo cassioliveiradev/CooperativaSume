@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name="email" required="true"/>
+        <composite:attribute name="phone2" required="true"/>
+    </composite:interface>
+
+    <composite:implementation>
+
+        <h:panelGrid columns="2" cellpadding="1">
+            <p:outputLabel for="phone2" value="#{msg.phone2}: "/>
+            <p:inputText id="phone2" styleClass="phone" value="#{cc.attrs.phone2}" 
+                         size="15" />
+
+            <p:outputLabel for="email" value="#{msg.email}: " />
+            <p:inputText id="email" value="#{cc.attrs.email}"
+                         maxlength="100" size="30" styleClass="lower" 
+                         validatorMessage="Email deve ser do tipo usuario@dominio.[com, com.br, org]">
+            </p:inputText>
+        </h:panelGrid>
+
+    </composite:implementation>
+</html>

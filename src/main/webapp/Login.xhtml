@@ -3,28 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="estilos.css"/>
-        <link rel="icon" type="image/x-icon" href="http://localhost:8080/infosaude-atendimento/resources/imagens/favicon.ico" />
-        <title><ui:insert name="title">InfoSaúde - Módulo Atendimento - Login</ui:insert></title>
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/LojaArtesanato/resources/images/favicon.ico" />
+        <title><ui:insert name="title">Loja de artesanato - Login</ui:insert></title>
     </h:head>
 
     <h:body>
 
-        <!--        <f:metadata>
-                    <f:viewParam name="dummy"/>
-                    <f:event listener="#{loginBean.preRender}" type="preRenderView"/>
-                </f:metadata>-->
-
         <div style="padding-top: 50px; text-align: center">
-            <h:graphicImage library="imagens" name="info_saude_web.png"/>
+            <h:graphicImage library="images" name="logo.png"/>
         </div>
 
-        <p:dialog header="Login InfoSaúde" closable="false" visible="true" resizable="false" 
+        <p:dialog header="Login" closable="false" visible="true" resizable="false" 
                   draggable="false" id="loginDialog">
             <h:form id="loginForm" prependId="false">
                 <p:messages id="loginMessages" autoUpdate="true" closable="true"/>
@@ -32,7 +26,7 @@
                 <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
                     <h:panelGroup>
 
-                        <h:graphicImage library="imagens" name="Login.png"/>
+                        <h:graphicImage library="images" name="Login.png"/>
                         <h:outputLabel/>
                     </h:panelGroup>
 

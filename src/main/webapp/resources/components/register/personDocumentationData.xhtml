@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name="docType" required="true"/>
+        <composite:attribute name="docNumber" required="true"/>
+        <composite:attribute name="issuingBody" required="true"/>
+    </composite:interface>
+
+    <composite:implementation>
+
+        <h:panelGrid columns="2" cellpadding="1">
+            <p:outputLabel for="docType" value="#{msg.docType}: " />
+            <p:selectOneMenu id="docType" value="#{cc.attrs.docType}">
+                <f:selectItem itemLabel="#{msg.selectIt}..."/>
+                <f:selectItems value="#{personBean.documentations}" 
+                               itemLabel="#{docType.description}" 
+                               itemValue="#{docType}" var="docType"/>
+                <f:ajax execute="docType" render="issuingBody"/>
+            </p:selectOneMenu>
+
+            <p:outputLabel for="docTravelNumber" value="#{msg.docNumber}: " />
+            <p:inputText id="docTravelNumber" maxlength="15" size="15"
+                         value="#{cc.attrs.docNumber}" />
+
+            <p:outputLabel for="issuingBody" value="#{msg.issuingBody}: " />
+            <p:inputText id="issuingBody" maxlength="15" size="15" value="#{cc.attrs.issuingBody}"
+                         disabled="#{cc.attrs.docType ne 'RG'}" placeholder="#{msg.issuingBodyPlaceholder}"/>
+        </h:panelGrid>
+
+    </composite:implementation>
+</html>

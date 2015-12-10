@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name="name" required="true"/>
+        <composite:attribute name="cpf" required="true"/>
+        <composite:attribute name="phone1"/>
+    </composite:interface>
+
+    <composite:implementation>
+
+        <h:panelGrid columns="2" cellpadding="1" id="formIndividual">
+            <p:outputLabel for="cpf" value="#{msg.cpf}: " style="margin-left: 20px"/>
+            <h:panelGroup id="panelGroupCPF" >
+                <p:inputMask id="cpf" mask="999.999.999-99" size="15" required="true"
+                             requiredMessage="Um número de CPF deve ser informado.  "
+                             value="#{cc.attrs.cpf}" converter="cpfConverter" validator="cpfValidator"/>
+                <p:graphicImage id="receitaImage" library="images" name="receita_logo.png" onclick="PF('siteReceita').show();
+                        return false;">
+                    <p:tooltip for="receitaImage" value="Clique para fazer a consulta do CPF na Receita Federal"/>
+                </p:graphicImage>
+            </h:panelGroup>
+
+            <p:outputLabel for="phone1" value="#{msg.phone1}: " style="margin-left: 20px"/>
+            <p:inputText id="phone1"  styleClass="phone" required="true"
+                         requiredMessage="Um número de telefone deve ser informado."
+                         value="#{cc.attrs.phone1}" size="15"/>
+
+            <p:outputLabel for="Name" value="#{msg.name}: " style="margin-left: 20px"/>
+            <p:inputText id="Name" value="#{cc.attrs.name}"
+                         maxlength="100" size="45"  required="true" 
+                         validatorMessage="Nome deve conter apenas letras, letras  e/ou espaços"
+                         requiredMessage="O nome do hóspede deve informado">
+                <f:validateRegex pattern="^[a-zA-ZéúíóáÉÚÍÓÁèùìòàÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄÇç\s\'\-]+$"/>
+            </p:inputText>
+        </h:panelGrid>
+    </composite:implementation>
+
+</html>

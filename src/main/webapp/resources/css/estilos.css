@@ -6,10 +6,11 @@
 }
 
 .logo{
-    width: 180px; 
-    height: 60px; 
+    width: 80px; 
+    height: 80px; 
     padding-left: 5px;
-    padding-top: 2px;
+    padding-top: 5px;
+    text-align: center;
 }
 
 #logged-user-top-message{
@@ -35,14 +36,15 @@ header{
     position: relative;
     width: 100%;
     margin-bottom: 10px; 
-    height: 60px; 
-    background-color: lightskyblue;
+    height: 100px; 
+    background-color: #00B2E4;
     color: white; 
-    box-shadow: 0px 3px 3px #ccc;
+    /*box-shadow: 0px 3px 3px #ccc;*/
 }
 
 body{
     font-size: 13px;
+    background-color: #00B2E4;
 }
 
 .upper{
@@ -61,9 +63,8 @@ body{
     margin-left: 5px;
 }
 
-.conteudo{
+.content{
     left: 0;
-    margin-left: 200px;
     border-radius: 5px;
     margin-right: 5px;
     margin-bottom: 10px;
@@ -86,14 +87,12 @@ footer {
     bottom: 0;
     border: 1px;
     border-radius: 5px;
-    background-color: lightskyblue;
+    background-color: #00B2E4;
 }
 
-.campo-invalido {
-    border: #FF0000 solid 1px !important;
-    margin: 1px;
-}
-
-.campo-invalido-mensagem {
-    color: red;
+.main-screen-button{
+    border: 1px solid whitesmoke;
+    width: 100px;
+    height: 100px;
+    border-radius: 7px;
 }

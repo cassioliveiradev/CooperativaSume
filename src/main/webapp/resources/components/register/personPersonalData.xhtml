@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name="gender" required="true"/>
+        <composite:attribute name="birthDate" required="true"/>
+        <composite:attribute name="profession" required="true"/>
+        <composite:attribute name="nickName" required="true"/>
+    </composite:interface>
+
+    <composite:implementation>
+
+        <h:panelGrid columns="2" cellpadding="1">
+            <p:outputLabel for="gender" value="#{msg.gender}: "/>
+            <p:selectOneMenu id="gender" value="#{cc.attrs.gender}">
+                <f:selectItem itemLabel="Selecione"/>
+                <f:selectItems value="#{personBean.genders}" itemLabel="#{gender.description}"
+                               itemValue="#{gender}" var="gender"/>
+            </p:selectOneMenu>
+
+            <p:outputLabel for="birthDate" value="#{msg.birthDate}: "/>
+            <p:calendar id="birthDate" navigator="true" pattern="dd/MM/yyyy" 
+                        yearRange="c-150:c+0" size="15" locale="pt" 
+                        value="#{cc.attrs.birthDate}" 
+                        maxdate="#{dateTimeUtilBean.dateToday}">
+            </p:calendar>
+
+            <p:outputLabel for="profession" value="#{msg.profession}: "/>
+            <p:inputText id="profession" maxlength="50" size="30" 
+                         value="#{cc.attrs.profession}" />
+
+            <p:outputLabel for="nickName" value="#{msg.nickName}: "/>
+            <p:inputText id="nickName" maxlength="50" size="30" 
+                         value="#{cc.attrs.nickName}" />
+        </h:panelGrid>
+
+    </composite:implementation>
+</html>
