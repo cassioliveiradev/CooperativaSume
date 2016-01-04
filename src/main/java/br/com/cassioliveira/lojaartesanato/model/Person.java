@@ -36,57 +36,57 @@ public class Person implements Serializable {
 
     @NotNull
     @Size(min = 0, max = 100)
-    @Column(name = "client_name", nullable = false, length = 100)
+    @Column(name = "product_name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "client_nick_name", length = 100)
+    @Column(name = "product_nick_name", length = 100)
     private String nickName;
 
     @Pattern(regexp = "^$|^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$",
             message = "E-mail com formato incorreto")
     @Size(min = 0, max = 100)
-    @Column(name = "client_email", length = 100)
+    @Column(name = "product_email", length = 100)
     private String email;
 
     @Size(min = 0, max = 150)
-    @Column(name = "client_address_street", length = 150)
+    @Column(name = "product_address_street", length = 150)
     private String street;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "client_address_uf")
+    @Column(name = "product_address_uf")
     private States uf;
 
     @Size(min = 0, max = 70)
-    @Column(name = "client_address_neighborhood", length = 70)
+    @Column(name = "product_address_neighborhood", length = 70)
     private String neighborhood;
 
     @Size(min = 0, max = 7)
-    @Column(name = "client_address_number", length = 7)
+    @Column(name = "product_address_number", length = 7)
     private String number;
 
     @Size(min = 0, max = 100)
-    @Column(name = "client_address_city", length = 100)
+    @Column(name = "product_address_city", length = 100)
     private String city;
 
     @Size(min = 0, max = 50)
-    @Column(name = "client_address_country", length = 50)
+    @Column(name = "product_address_country", length = 50)
     private String country;
 
     @Size(min = 0, max = 10)
-    @Column(name = "client_address_postal_code", length = 10)
+    @Column(name = "product_address_postal_code", length = 10)
     private String postalCode;
 
     @NotNull
-    @Column(name = "client_phone1", nullable = false)
+    @Column(name = "product_phone1", nullable = false)
     private String phone1;
 
-    @Column(name = "client_phone2")
+    @Column(name = "product_phone2")
     private String phone2;
 
-    @Column(name = "client_nationality")
+    @Column(name = "product_nationality")
     private String nationality;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "client_date")
+    @Column(name = "product_date")
     private Date date;
 }

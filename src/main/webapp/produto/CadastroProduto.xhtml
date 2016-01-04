@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="/WEB-INF/templates/head.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="product" value="#{productBean.product}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+
+        <h:form id="formCadastreproduct">
+
+            <p:growl autoUpdate="true"/>
+
+            <p:fieldset legend="#{productBean.editing ? (msg.editCadastre).concat(msg.product) : (msg.newRegister).concat(msg.product)}">
+
+                <h:panelGrid columns="2">
+                    
+                    <p:outputLabel for="isPerishable" value="Perecível? "/>
+                    <p:selectOneRadio id="isPerishable" value="#{productBean.product.perishable}">
+                        <f:selectItem id="yes" itemLabel="Sim"/>
+                        <f:selectItem id="no" itemLabel="Não"/>
+                    </p:selectOneRadio>
+                    
+                    <p:outputLabel for="code" value="Código: "/>
+                    <p:inputText id="code" value="#{productBean.product.code}" maxlength="25"/>
+
+                    <p:outputLabel for="barCode" value="Código de barras: "/>
+                    <p:inputText id="barCode" value="#{productBean.product.barCode}" maxlength="50"/>
+
+                    <p:outputLabel for="description" value="Descrição: "/>
+                    <p:inputText id="description" value="#{productBean.product.description}" maxlength="70"/>
+
+                    <p:outputLabel for="category" value="Categoria: "/>
+                    <p:selectOneMenu id="category" value="#{productBean.product.category}" editable="true" filter="true" 
+                                     filterMatchMode="contains" style="width: 164px">
+                        <f:selectItem id="noSelection" noSelectionOption="true" itemLabel="Digite ou selecione"/>
+                        <f:selectItems id="categories" value="#{productBean.categories}" var="category" itemLabel="#{category}" 
+                                       itemValue="#{category}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="unity" value="Unidade: "/>
+                    <p:selectOneMenu id="unity" value="#{productBean.product.unit}" style="width: 164px">
+                        <f:selectItems id="unitys" value="#{productBean.units}" var="unit" itemLabel="#{unit.description}" 
+                                       itemValue="#{unit}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="price" value="Preço: "/>
+                    <p:inputText id="price" value="#{productBean.product.price}" styleClass="money">
+                        <f:convertNumber type="currency" maxFractionDigits="2" pattern="#0.00" currencySymbol="R$"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="expirationDate" value="Validade: "/>
+                    <p:calendar id="expirationDate" value="#{productBean.product.expirationDate}"
+                                navigator="true" pattern="dd/MM/yyyy" locale="pt"
+                                mindate="#{dateTimeUtilBean.dateToday}"/>
+
+                </h:panelGrid>
+
+                <p:toolbar id="panelButtonsConsult" style="margin-top: 10px;">
+                    <f:facet name="left">
+                        <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
+                                         action="#{productBean.save}" id="saveButton" update="@form" 
+                                         rendered="#{productBean.editing ne true}"/>
+                    </f:facet>
+
+                    <f:facet name="right">
+                        <p:button value="#{productBean.editing ? 'Voltar' : 'Pesquisar produtos'}" id="searchRegister" outcome="/produto/PesquisaProduto" 
+                                  icon="ui-icon ui-icon-pencil"/>
+                    </f:facet>
+                </p:toolbar> 
+            </p:fieldset>
+            <p:blockUI block="formCadastreproduct" trigger="saveButton">
+                <p:graphicImage library="images" name="loading.gif"/>
+                <br/>
+                #{msg.wait}...
+            </p:blockUI>
+        </h:form>
+
+        <p:dialog widgetVar="siteReceita" header="Consulta de CPF na Receita Federal" modal="true" 
+                  resizable="false" closable="true" draggable="true" id="siteReceita">
+            <iframe height="500" width="800"  
+                    src="http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/consultapublica.asp#theForm"/>
+        </p:dialog>
+
+    </ui:define>
+
+</ui:composition>

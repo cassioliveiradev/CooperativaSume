@@ -1,7 +1,7 @@
 package br.com.cassioliveira.lojaartesanato.services;
 
 import br.com.cassioliveira.lojaartesanato.dao.PersonDao;
-import br.com.cassioliveira.lojaartesanato.model.Client;
+import br.com.cassioliveira.lojaartesanato.model.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -23,7 +23,7 @@ public class PersonServices implements Serializable {
         return personDao.returnCountries();
     }
     
-    public List<Client> completeMethod(String query) {
+    public List<Product> completeMethod(String query) {
         return personDao.findByNameLike(query);
     }
 

@@ -6,8 +6,17 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <div align="center"><p:graphicImage library="images" name="logo.png"/></div>
-        <h1 align="center" style="vertical-align: middle">Seja bem-vindo!</h1>
+
+        <div class="content-center">
+            <p:link outcome="/produto/PesquisaProduto.xhtml" styleClass="main-screen-button">
+                <div class="main-screen-button-text">Produtos</div>
+            </p:link>
+
+            <div class="main-screen-button">
+                <div class="main-screen-button-text">Fornecedores</div>
+            </div>
+        </div>
+
     </ui:define>
 
 </ui:composition> 

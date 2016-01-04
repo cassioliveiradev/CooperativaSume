@@ -18,22 +18,22 @@ public class Corporate extends Person implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "client_fantasy_name", length = 150)
+    @Column(name = "product_fantasy_name", length = 150)
     private String fantasyName;
 
     @Getter
     @Setter
-    @Column(name = "client_cnpj", length = 14, unique = true)
+    @Column(name = "product_cnpj", length = 14, unique = true)
     private String cnpj;
 
     @Getter
     @Setter
-    @Column(name = "client_state_register", length = 15)
+    @Column(name = "product_state_register", length = 15)
     private String stateRegister;
 
     @Getter
     @Setter
-    @Column(name = "client_municipal_register", length = 15)
+    @Column(name = "product_municipal_register", length = 15)
     private String municipalRegister;
 
 //    @ManyToOne

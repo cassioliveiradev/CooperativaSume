@@ -19,20 +19,32 @@
     <h:body>
 
         <header>
-            <h:link outcome="/Home" >
-                <p:graphicImage library="images" name="logo.png" styleClass="logo"/>
-            </h:link>
-<!--            <h:form id="formUsuarioLogado" style="float: right; margin-right: 80px; margin-top: 15px; text-align: right">
-                <h:outputLabel value="#{msg.welcome}: "/>  
-                <h:outputLabel id="menuButtonLogado" value="#{contaBean.usuarioLogado}"/>
-            </h:form> -->
+            <div class="container-logo">
+                <h:link outcome="/Home" >
+                    <p:graphicImage library="images" name="logo.png" styleClass="logo"/>
+                </h:link>
+            </div>
+            <!--            <h:form id="formUsuarioLogado" style="float: right; margin-right: 80px; margin-top: 15px; text-align: right">
+                            <h:outputLabel value="#{msg.welcome}: "/>  
+                            <h:outputLabel id="menuButtonLogado" value="#{contaBean.usuarioLogado}"/>
+                        </h:form> -->
 
         </header>
 
-        <ui:include src="main-menu.xhtml"/>
+        <div class="all-content">
+            <div class="content">
+                <ui:insert name="content"/>
+            </div>
 
-        <div class="content">
-            <ui:insert name="content"/>
+            <div class="menu">
+                <div class="container-home-button">
+                    <h:link outcome="/Home" >
+                        <p:graphicImage library="images" name="/icon/home.png" width="50" height="50"/>
+                    </h:link>
+                </div>
+                
+<!--                <ui:include src="main-menu.xhtml"/>-->
+            </div>
         </div>
 
         <footer>
@@ -89,58 +101,6 @@
             }
             );
         </script>
-
-        <!--Script que formata o valor inserido no campo peso da tela de paciente com Jquery.-->
-        <script>
-            function validateWeight() {
-                $(".peso").maskMoney({
-                    decimal: ",",
-                    thousands: ".",
-                    allowZero: false
-                });
-            }
-
-            $(document).ready(function () {
-                validateWeight();
-            });
-        </script>
-
-        <!--Script que formata o valor inserido no campo altura da tela de paciente com Jquery.-->
-        <script>
-            function validateHeight() {
-                $(".altura").maskMoney({
-                    decimal: ",",
-                    thousands: ".",
-                    allowZero: false
-                });
-            }
-
-            $(document).ready(function () {
-                validateHeight();
-            });
-        </script>
-
-        <!--Este script exibe uma mensagem Javscript no navegador informando sobre qualquer alteração não salva na tela.-->
-        <!--        <script>
-                    $(document).ready(function () {
-                        // Sempre que um input Mudar
-                        $(':input').change(function () {
-                            setConfirmaSairSemSalvar(true);
-                        });
-        
-                        // Sem mudança no form
-                        $('form').submit(function () {
-                            setConfirmaSairSemSalvar(false);
-                        });
-                    });
-        
-                    function setConfirmaSairSemSalvar(on) {
-                        var message = "Você fez alterações e não salvou. Todos os dados não salvos serão perdidos.\n\nDeseja sair da tela assim mesmo?";
-                        window.onbeforeunload = (on) ? function () {
-                            return message;
-                        } : null;
-                    }
-                </script>-->
 
     </h:body>
 </html>

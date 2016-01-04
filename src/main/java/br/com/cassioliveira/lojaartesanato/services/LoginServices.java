@@ -18,13 +18,13 @@
 //    private LoginDao loginDao;
 //
 //    @Transactional
-//    public void save(Login client) throws GenericException {
-//        this.loginDao.save(client);
+//    public void save(Login product) throws GenericException {
+//        this.loginDao.save(product);
 //    }
 //
 //    @Transactional
-//    public void delete(Login client) throws GenericException {
-//        loginDao.delete(findById(client.getId()));
+//    public void delete(Login product) throws GenericException {
+//        loginDao.delete(findById(product.getId()));
 //    }
 //
 //    public Login findById(Long id) {

@@ -131,8 +131,8 @@ public class ValidationListener implements SystemEventListener {
      * componente como sendo invalido.
      */
     private boolean possuiMensagensDeErro(UIInput input) {
-        String clientId = input.getId();
-        List<FacesMessage> messages = FacesContext.getCurrentInstance().getMessageList(clientId);
+        String productId = input.getId();
+        List<FacesMessage> messages = FacesContext.getCurrentInstance().getMessageList(productId);
         for (FacesMessage message : messages) {
             if (FacesMessage.SEVERITY_ERROR.equals(message.getSeverity())) {
                 return true;

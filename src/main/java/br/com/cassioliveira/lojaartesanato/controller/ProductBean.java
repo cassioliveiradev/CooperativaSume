@@ -1,11 +1,12 @@
 package br.com.cassioliveira.lojaartesanato.controller;
 
+import br.com.cassioliveira.lojaartesanato.enumerations.Unit;
 import br.com.cassioliveira.lojaartesanato.services.ProductServices;
 import br.com.cassioliveira.lojaartesanato.exceptions.GenericException;
 import br.com.cassioliveira.lojaartesanato.model.Product;
-import br.com.cassioliveira.lojaartesanato.model.Client;
 import br.com.cassioliveira.lojaartesanato.util.jsf.FacesUtil;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -38,27 +39,30 @@ public class ProductBean implements Serializable {
     private Product selectedProduct;
 
     @Getter
-    private List<Client> clients;
-
-    @Getter
     private List<Product> products;
 
-    public ProductBean() {
+    @Getter
+    private final List<Unit> units;
 
+    @Getter
+    private List<String> categories;
+
+    public ProductBean() {
+        units = Arrays.asList(Unit.values());
     }
 
     @PostConstruct
     public void init() {
         this.products = productServices.findAll();
+        this.categories = productServices.getCategories();
     }
 
     public void save() throws GenericException {
+        this.productServices.save(product);
         if (getEditing()) {
-            this.productServices.save(product);
-            FacesUtil.sucessMessage("Cadastro do produto '" + product.getCode() + "' atualizado com sucesso!");
-            FacesUtil.redirectTo("SearchProduct.xhtml");
+            FacesUtil.sucessMessage("Cadastro do produto '" + product.getDescription() + "' atualizado com sucesso!");
+            FacesUtil.redirectTo("PesquisaProduto.xhtml");
         } else {
-            this.productServices.save(product);
             FacesUtil.sucessMessage("Cadastro do produto " + product.getDescription() + " realizada com sucesso!");
             FacesUtil.redirectTo("/LojaArtesanato/Home.xhtml");
         }

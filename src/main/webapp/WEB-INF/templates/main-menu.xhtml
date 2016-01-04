@@ -8,12 +8,12 @@
 
     <div class="menu">
         <ui:insert name="menu">
-            <h:form>
-<!--                <p:stack icon="/resources/images/stacks.png" expanded="true">
-                    <p:menuitem value="#{msg.client}" icon="/resources/images/user.png" style="width: 40px"/>
-                    <p:menuitem value="#{msg.product}" icon="/resources/images/product.png" style="width: 40px"/>
-                    <p:menuitem icon="fa fa-sign-out" title="#{msg.exit}" value="#{msg.exit}" id="exitButton"/>
-                </p:stack>-->
+            <h:form> 
+                <div class="home-button">
+                    <h:link outcome="/Home" >
+                        <p:graphicImage library="images" name="/icon/home.png" width="50" height="50"/>
+                    </h:link>
+                </div>
             </h:form>
         </ui:insert>
     </div>
