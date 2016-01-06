@@ -38,8 +38,7 @@
 
                     <p:outputLabel for="category" value="Categoria: "/>
                     <p:selectOneMenu id="category" value="#{productBean.product.category}" editable="true" filter="true" 
-                                     filterMatchMode="contains" style="width: 164px">
-                        <f:selectItem id="noSelection" noSelectionOption="true" itemLabel="Digite ou selecione"/>
+                                     filterMatchMode="contains" style="width: 164px" label="Digite ou selecione">
                         <f:selectItems id="categories" value="#{productBean.categories}" var="category" itemLabel="#{category}" 
                                        itemValue="#{category}"/>
                     </p:selectOneMenu>
@@ -81,12 +80,6 @@
                 #{msg.wait}...
             </p:blockUI>
         </h:form>
-
-        <p:dialog widgetVar="siteReceita" header="Consulta de CPF na Receita Federal" modal="true" 
-                  resizable="false" closable="true" draggable="true" id="siteReceita">
-            <iframe height="500" width="800"  
-                    src="http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/consultapublica.asp#theForm"/>
-        </p:dialog>
 
     </ui:define>
 
