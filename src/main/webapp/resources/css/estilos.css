@@ -90,7 +90,7 @@ body{
 .all-content{
     left: 0;
     border: 2px solid chartreuse;
-    
+
     display: flex;
     align-items: stretch;
     flex-direction: column;
@@ -156,16 +156,19 @@ footer {
 }
 
 .main-screen-button{
-    border: 1px solid whitesmoke;
+    border: 2px solid whitesmoke;
     width: 170px;
     height: 170px;
     border-radius: 7px;
     margin: 10px;
     text-decoration: none;
-    
-    
     text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
     box-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
+}
+
+.main-screen-button-image{
+    margin-left: 35px;
+    margin-top: 20px;
 }
 
 .main-screen-button-text{
@@ -175,216 +178,49 @@ footer {
     font-weight: bold;
     font-size: 20px;
     vertical-align: text-bottom;
-    
 }
 
 .home-button{
     width: 50px; 
     height: 50px; 
     border: 1px solid yellow;
-    
-    
 }
 
-
-
-
-
-/*html, body{height: 100%;}
-
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-.container-logo{
-
-    height: 100%;
-    min-height: 100%;
-
-     habilita o flex nos filhos diretos 
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-
-     centraliza na vertical 
-    -ms-align-items: center;
-    -webkit-align-items: center;
-    align-items: center;
-
-     centraliza na horizontal 
-    -ms-justify-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-
-    margin-left: 150px;
-    margin-right: 150px;
-}
-
-.logo{
-    width: 80px; 
-    height: 80px; 
-    padding-left: 5px;
-    padding-top: 5px;
-}
-
-#logged-user-top-message{
-    height: 10px; 
-    text-align: right;
-    font-size: 12px;
-    float: right;
-    margin-right: 10px;
-    color: white;
-    text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
-}
-
-.logged-user .ui-button{
-    background: none !important;
-    padding: 0px !important;
-    border: 0px !important;
-    font-size: 12px;
-    color: white;
-    text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
-}
-
-header{
-    position: relative;
-    width: 100%;
-    margin-bottom: 10px; 
-    height: 100px; 
-    background-color: #009178;
-    color: white; 
-    border: 1px;
-    box-shadow: 0px 3px 3px #ccc;
-}
-
-body{
-    font-size: 13px;
-    background-color: #009178;
-        background-color: #00B2E4;
-}
-
-.upper{
-    text-transform: uppercase;
-}
-
-.lower{
-    text-transform: lowercase;
-}
-
-.menu{
-    left: 0;
-    width: 180px;
-    margin-left: 5px;
-}
-
-.all-content{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.content{
-    left: 0;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 1px;
-    margin-left: 150px;
-    margin-right: 150px;
-}
-
-#bottom{
-    color: darkcyan;
-    margin: 5px 5px 5px 5px;
-    font-weight: bold;
-    font-size: 10px;
-}
-
-footer {
-    position: fixed;
-    padding: 0px;
-    margin-bottom: 1px;
-    color: white;
-    height: 20px;
-    width: 100%;
-    bottom: 0;
-    border-radius: 5px;
-    background-color: #009178;
-}
-
-.content-center{
-
-    height: 100%;
-    min-height: 450px;
-
-    habilita o flex nos filhos diretos 
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-
-    centraliza na vertical 
-    -ms-align-items: center;
-    -webkit-align-items: center;
-    align-items: center;
-
-    centraliza na horizontal 
-    -ms-justify-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-
-    padding: 7px;
-    position: relative;
-
-}
-
-.main-screen-button{
-    border: 1px solid whitesmoke;
-    width: 170px;
-    height: 170px;
-    border-radius: 7px;
-    margin: 10px;
-    text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
-    box-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
-}
-
-.main-screen-button-text{
+.box-acesso-negado{
+    background-color: #F2DEDE;
+    width: 400px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;/* Aqui ele pega 50% da altura tela e sobe metade do valor da altura, no caso 100 */
+    border-radius: 10px;
+    left:50%;
+    margin-left:-250px; /* Aqui ele pega 50% da largura tela e diminui  metade do valor da largura, no caso 250 */
+    box-shadow: 3px 3px 5px #ccc;
     padding: 5px;
+}
+
+#logo-acesso-negado{
     text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    vertical-align: text-bottom;
 }
 
-.container-home-button{
-    height: 100%;
-    min-height: 100%;
-
-    habilita o flex nos filhos diretos 
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-
-    centraliza na vertical 
-    -ms-align-items: center;
-    -webkit-align-items: center;
-    align-items: center;
-
-    centraliza na horizontal 
-    -ms-justify-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-
-    position: relative;
+#titulo-acesso-negado{
+    color: #A94442; 
+    text-align: center; 
+    font-size: 33px;
+    margin-top: 7px;
 }
 
-.home-button{
-    width: 50px; 
-    height: 50px; 
-}*/
+#mensagem-acesso-negado{
+    color: #A94442; 
+    text-align: center; 
+    font-size: 16px;
+    margin-top: 15px;
+}
 
+.ui-button.botaoOK{
+    background: #F2A1A1 !important;
+    text-align: center !important;
+    margin-top: 7%;
+    margin-left: 44%;
+}

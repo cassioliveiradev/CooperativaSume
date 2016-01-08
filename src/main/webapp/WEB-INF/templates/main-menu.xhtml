@@ -8,11 +8,16 @@
 
     <div class="menu">
         <ui:insert name="menu">
-            <h:form> 
-                <div class="home-button">
-                    <h:link outcome="/Home" >
+            <h:form id="menuForm"> 
+                <div class="container-home-button">
+                    <p:commandLink action="#{genericBean.toHome}">
                         <p:graphicImage library="images" name="/icon/home.png" width="50" height="50"/>
-                    </h:link>
+                    </p:commandLink>
+
+                    <p:commandLink action="#{loginBean.logout}">
+                        <p:graphicImage library="images" name="/icon/door.png" width="50" height="50"/>
+                    </p:commandLink>
+
                 </div>
             </h:form>
         </ui:insert>

@@ -6,6 +6,7 @@ import br.com.cassioliveira.lojaartesanato.services.LoginServices;
 import br.com.cassioliveira.lojaartesanato.util.jsf.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
@@ -54,6 +55,11 @@ public class LoginBean implements Serializable {
     public LoginBean() {
 //        this.loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
     }
+    
+    @PostConstruct
+    public void init(){
+        this.logins = loginServices.findAll();
+    }
 
     /**
      * Chama um metodo do Service que faz a comunicaçao com a camada de
@@ -99,7 +105,6 @@ public class LoginBean implements Serializable {
      * @return the logins
      */
     public List<Login> getLogins() {
-        this.logins = loginServices.findAll();
         return logins;
     }
 
@@ -108,7 +113,7 @@ public class LoginBean implements Serializable {
      *
      * @return
      */
-    public String getLogout() {
+    public String logout() {
         SecurityUtils.getSubject().logout();
         return "/Login.xhtml?faces-redirect=true";
     }

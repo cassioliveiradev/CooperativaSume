@@ -24,10 +24,10 @@
                     <p:graphicImage library="images" name="logo.png" styleClass="logo"/>
                 </h:link>
             </div>
-<!--            <h:form id="formUsuarioLogado" style="float: right; margin-right: 80px; margin-top: 15px; text-align: right">
-                <h:outputLabel value="#{msg.welcome}: "/>  
-                <h:outputLabel id="menuButtonLogado" value="#{loginBean.loggedUser}"/>
-            </h:form> -->
+            <!--            <h:form id="formUsuarioLogado" style="float: right; margin-right: 80px; margin-top: 15px; text-align: right">
+                            <h:outputLabel value="#{msg.welcome}: "/>  
+                            <h:outputLabel id="menuButtonLogado" value="#{loginBean.loggedUser}"/>
+                        </h:form> -->
 
         </header>
 
@@ -37,13 +37,7 @@
             </div>
 
             <div class="menu">
-                <div class="container-home-button">
-                    <h:link outcome="/Home" >
-                        <p:graphicImage library="images" name="/icon/home.png" width="50" height="50"/>
-                    </h:link>
-                </div>
-
-                <!--                <ui:include src="main-menu.xhtml"/>-->
+                <ui:include src="main-menu.xhtml"/>
             </div>
         </div>
 

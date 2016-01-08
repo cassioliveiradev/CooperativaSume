@@ -16,6 +16,10 @@ public class GenericBean implements Serializable {
     @Setter
     private String text;
 
+    public String toHome() {
+        return "/Home.xhtml?faces-redirect=true";
+    }
+
     /**
      * Este método é um pequeno utilitário para gerar um hash do tipo SHA-256 de
      * um texto qualquer, porém é mais usado em senhas.
@@ -26,5 +30,4 @@ public class GenericBean implements Serializable {
 //        Sha256Hash sha256Hash = new Sha256Hash(this.text);
 //        this.text = sha256Hash.toHex();
 //    }
-
 }
