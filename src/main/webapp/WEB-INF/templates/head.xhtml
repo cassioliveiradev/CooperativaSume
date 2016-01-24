@@ -43,6 +43,8 @@
 
         <footer>
             <div id="bottom" style="margin-left: 50%">
+                <h:outputLabel value="Usuário: "/>  
+                <h:outputLabel id="loggedUser" value="#{loginBean.loggedUser}"/>
                 <p:outputLabel value="#{msg.systemName} - "/>
                 <p:outputLabel value="#{msg.systemVersion}"/>
             </div>

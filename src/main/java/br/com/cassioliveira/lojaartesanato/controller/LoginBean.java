@@ -46,14 +46,14 @@ public class LoginBean implements Serializable {
     @Getter
     @Setter
     private Login selectedLogin;
-
-//    @Getter
-//    private final String loggedUser;
+    
+    @Getter
+    private final String loggedUser;
 
     private List<Login> logins;
 
     public LoginBean() {
-//        this.loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
+        this.loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
     }
     
     @PostConstruct

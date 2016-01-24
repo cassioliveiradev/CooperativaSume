@@ -82,14 +82,37 @@ body{
 }
 
 .menu{
-    left: 0;
-    width: 180px;
-    margin-left: 5px;
+
+    height: 100%;
+    min-height: 100px;
+
+    /*habilita o flex nos filhos diretos*/ 
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+
+    /*centraliza na vertical*/ 
+    -ms-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    /*centraliza na horizontal*/ 
+    -ms-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    border: 1px;
+    position: relative;
+
+    /*    left: 0;
+        width: 180px;
+        margin-left: 5px;*/
 }
 
 .all-content{
     left: 0;
-    border: 2px solid chartreuse;
+    border: 2px;
 
     display: flex;
     align-items: stretch;
@@ -105,7 +128,7 @@ body{
     border: 1px;
     margin-left: 150px;
     margin-right: 150px;
-    border: 2px solid aqua;
+    border: 2px;
 }
 
 #bottom{
@@ -123,7 +146,7 @@ footer {
     height: 20px;
     width: 100%;
     bottom: 0;
-    border: 1px solid white;
+    border: 1px;
     border-radius: 5px;
     background-color: #009178;
 }
@@ -149,7 +172,7 @@ footer {
     -webkit-justify-content: center;
     justify-content: center;
 
-    border: 1px solid red;
+    border: 1px;
     padding: 7px;
     position: relative;
 
@@ -183,7 +206,7 @@ footer {
 .home-button{
     width: 50px; 
     height: 50px; 
-    border: 1px solid yellow;
+    border: 1px;
 }
 
 .box-acesso-negado{

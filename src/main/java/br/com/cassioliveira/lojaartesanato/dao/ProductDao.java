@@ -21,4 +21,12 @@ public class ProductDao extends AbstractDao<Product> implements Serializable {
         createQuery = getEntityManager().createQuery("SELECT DISTINCT p.category FROM Product p");
         return createQuery.getResultList();
     }
+    
+    public List<Product> findByUser(String user) {
+        Query createQuery;
+
+        createQuery = getEntityManager().createNativeQuery("SELECT p FROM Product p WHERE p.product_associated_user_name = '" + user +"'");
+        System.err.println("PRODUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS: " + createQuery.getResultList());
+        return createQuery.getResultList();
+    }
 }

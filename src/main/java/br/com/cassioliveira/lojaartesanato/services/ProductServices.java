@@ -43,6 +43,10 @@ public class ProductServices {
     public List<String> getCategories() {
         return productDao.getCategories();
     }
+    
+    public List<Product> findByUser(String user) {
+        return productDao.findByUser(user);
+    }
 
     /**
      * Recebe o valor passado pelo método buscarPorCampo() para determinar a

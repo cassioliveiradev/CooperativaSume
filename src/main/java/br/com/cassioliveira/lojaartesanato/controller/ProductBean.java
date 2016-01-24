@@ -13,6 +13,7 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.shiro.SecurityUtils;
 
 /**
  *
@@ -46,6 +47,8 @@ public class ProductBean implements Serializable {
 
     @Getter
     private List<String> categories;
+    
+    private final String loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
 
     public ProductBean() {
         units = Arrays.asList(Unit.values());
@@ -53,7 +56,8 @@ public class ProductBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        this.products = productServices.findAll();
+        this.products = productServices.findByUser(this.loggedUser);
+//        this.products = productServices.findAll();
         this.categories = productServices.getCategories();
     }
 
@@ -82,6 +86,10 @@ public class ProductBean implements Serializable {
      */
     public boolean getEditing() {
         return this.product.getId() != null;
+    }
+    
+    public void getFindByUser(){
+        productServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
     }
 
 }

@@ -11,12 +11,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import org.apache.shiro.SecurityUtils;
 
 /**
  * Class to modelling the Product entity.
@@ -63,6 +63,9 @@ public class Product implements Serializable {
     @Column(name = "product_expiration_date")
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
+    
+    @Column(name = "product_associated_user_name")
+    private String userName;
 
     /**
      * Atributo referente ao armazenamento da data em que o registro foi
@@ -78,6 +81,8 @@ public class Product implements Serializable {
      */
     @PostConstruct
     public void init() {
+//        Product product = new Product();
         setUnit(Unit.UNIDADE);
+        setUserName((String) SecurityUtils.getSubject().getPrincipal());
     }
 }
