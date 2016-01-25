@@ -3,6 +3,7 @@ package br.com.cassioliveira.lojaartesanato.dao;
 import br.com.cassioliveira.lojaartesanato.model.Product;
 import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.inject.spi.Producer;
 import javax.persistence.Query;
 
 /**
@@ -24,9 +25,8 @@ public class ProductDao extends AbstractDao<Product> implements Serializable {
     
     public List<Product> findByUser(String user) {
         Query createQuery;
-
-        createQuery = getEntityManager().createNativeQuery("SELECT p FROM Product p WHERE p.product_associated_user_name = '" + user +"'");
-        System.err.println("PRODUTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOS: " + createQuery.getResultList());
+        createQuery = getEntityManager().createQuery("FROM Product p WHERE p.userName = :userName", Product.class);
+        createQuery.setParameter("userName", user);
         return createQuery.getResultList();
     }
 }

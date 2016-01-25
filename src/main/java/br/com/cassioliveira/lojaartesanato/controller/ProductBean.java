@@ -47,7 +47,7 @@ public class ProductBean implements Serializable {
 
     @Getter
     private List<String> categories;
-    
+
     private final String loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
 
     public ProductBean() {
@@ -57,7 +57,6 @@ public class ProductBean implements Serializable {
     @PostConstruct
     public void init() {
         this.products = productServices.findByUser(this.loggedUser);
-//        this.products = productServices.findAll();
         this.categories = productServices.getCategories();
     }
 
@@ -65,17 +64,17 @@ public class ProductBean implements Serializable {
         this.productServices.save(product);
         if (getEditing()) {
             FacesUtil.sucessMessage("Cadastro do produto '" + product.getDescription() + "' atualizado com sucesso!");
-            FacesUtil.redirectTo("PesquisaProduto.xhtml");
         } else {
             FacesUtil.sucessMessage("Cadastro do produto " + product.getDescription() + " realizada com sucesso!");
-            FacesUtil.redirectTo("/LojaArtesanato/Home.xhtml");
         }
+        FacesUtil.redirectTo("PesquisaProduto.xhtml");
         product = new Product();
     }
 
     public void remove() throws GenericException {
         this.productServices.delete(selectedProduct);
         FacesUtil.sucessMessage("Exclusão efetuada com sucesso!");
+        product = new Product();
     }
 
     /**
@@ -87,8 +86,8 @@ public class ProductBean implements Serializable {
     public boolean getEditing() {
         return this.product.getId() != null;
     }
-    
-    public void getFindByUser(){
+
+    public void getFindByUser() {
         productServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
     }
 

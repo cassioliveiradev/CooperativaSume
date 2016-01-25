@@ -64,12 +64,11 @@
                 <p:toolbar id="panelButtonsConsult" style="margin-top: 10px;">
                     <f:facet name="left">
                         <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
-                                         action="#{productBean.save}" id="saveButton" update="@form" 
-                                         rendered="#{productBean.editing ne true}"/>
+                                         action="#{productBean.save}" id="saveButton" update="@form"/>
                     </f:facet>
 
                     <f:facet name="right">
-                        <p:button value="#{productBean.editing ? 'Voltar' : 'Pesquisar produtos'}" id="searchRegister" outcome="/produto/PesquisaProduto" 
+                        <p:button value="Pesquisar produtos" id="searchRegister" outcome="/produto/PesquisaProduto" 
                                   icon="ui-icon ui-icon-pencil"/>
                     </f:facet>
                 </p:toolbar> 
