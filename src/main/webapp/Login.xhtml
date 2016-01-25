@@ -14,52 +14,43 @@
 
     <h:body>
 
-        <div style="padding-top: 50px; text-align: center">
-            <h:graphicImage library="images" name="logo.png"/>
-        </div>
-
-        <p:dialog header="Login" closable="false" visible="true" resizable="false" 
-                  draggable="false" id="loginDialog">
+        <p:dialog closable="false" visible="true" resizable="false" draggable="false" 
+                  id="loginDialog" width="300" style="">
             <h:form id="loginForm" prependId="false">
                 <p:messages id="loginMessages" autoUpdate="true" closable="true"/>
 
+                <div style="text-align: center">
+                    <h:graphicImage library="images" name="logo-login.png"/>
+                </div>
+
                 <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
-                    <h:panelGroup>
-
-                        <h:graphicImage library="images" name="Login.png"/>
-                        <h:outputLabel/>
-                    </h:panelGroup>
 
                     <h:panelGroup>
-
-                        <h:panelGrid columns="2" cellpadding="4">
+                        <h:panelGrid columns="1" cellpadding="4" border="0">
                             <p:outputLabel for="username" value="Usuário:"/>
                             <p:inputText id="username" required="true" requiredMessage="#{msg.mandatoryLogin}" 
-                                         size="20" value="#{loginBean.login.userName}"/>
+                                         size="37" value="#{loginBean.login.userName}"  style="margin-bottom: 15px"/>
 
                             <p:outputLabel for="password" value="Senha:"/>
-                            <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}"
-                                        value="#{loginBean.login.password}"/>
+                            <p:password id="password" size="37" required="true" requiredMessage="#{msg.mandatoryPassword}"
+                                        value="#{loginBean.login.password}" style="margin-bottom: 15px"/>
 
-                            <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
-                                             update="@form" process="@this" action="#{loginBean.loginUser}" ajax="false"/>
 
-                            <p:commandButton id="lostPasswordLink" onclick="PF('loginPasswordRecover').show();
-                                    return false;" icon="ui-icon ui-icon-help" style="float: right;"/>
+                                <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
+                                                 update="@form" process="@this" action="#{loginBean.loginUser}" ajax="false"
+                                                 style="float: right; margin-bottom: 15px"/>
 
-                            <p:tooltip for="lostPasswordLink" value="Ajuda para recuperar senha." showEffect="fade"/>
+<!--                                <p:commandLink target="loginPasswordRecover" value="Esqueci minha senha"
+                                               onclick="PF('loginPasswordRecover').show(); return false;"/>-->
                         </h:panelGrid>
                     </h:panelGroup>
 
                 </h:panelGrid>
 
-                <p:button icon="ui-icon ui-icon-unlocked" style="float: right" outcome="/Home"/>
-
-
             </h:form>
         </p:dialog>
 
-        <!--Dialog requesting E-mail to the password recover.--> 
+<!--        Dialog requesting E-mail to the password recover. 
         <p:dialog widgetVar="loginPasswordRecover" header="Recuperação de senha" modal="true" 
                   resizable="false" draggable="false" id="dialogEmailRequest">
             <h:form style="line-height: 16px">
@@ -72,7 +63,7 @@
             </h:form>
         </p:dialog>
 
-        <!--Confirmation dialog about sending mail to password recovering.-->
+        Confirmation dialog about sending mail to password recovering.
         <p:dialog widgetVar="msgEmailConfirm" header="Confirmação de recuperação de senha" modal="true" 
                   resizable="false" closable="false" draggable="false" id="dialogConfirmationMessage">
             <h:form style="line-height: 16px">
@@ -83,7 +74,7 @@
                 <br/>
                 <p:commandButton id="okButton" value="Ok" onclick="PF('msgEmailConfirm').hide();"/>
             </h:form>
-        </p:dialog>
+        </p:dialog>-->
 
     </h:body>
 </html>

@@ -24,10 +24,6 @@
                     <p:graphicImage library="images" name="logo.png" styleClass="logo"/>
                 </h:link>
             </div>
-            <!--            <h:form id="formUsuarioLogado" style="float: right; margin-right: 80px; margin-top: 15px; text-align: right">
-                            <h:outputLabel value="#{msg.welcome}: "/>  
-                            <h:outputLabel id="menuButtonLogado" value="#{loginBean.loggedUser}"/>
-                        </h:form> -->
 
         </header>
 
@@ -42,11 +38,11 @@
         </div>
 
         <footer>
-            <div id="bottom" style="margin-left: 50%">
-                <h:outputLabel value="Usuário: "/>  
-                <h:outputLabel id="loggedUser" value="#{loginBean.loggedUser}"/>
-                <p:outputLabel value="#{msg.systemName} - "/>
-                <p:outputLabel value="#{msg.systemVersion}"/>
+            <div id="bottom" >
+                <h:outputLabel value="#{msg.user}:  " style="float: left; font-size: 12px"/>  
+                <h:outputLabel id="loggedUser" value="#{loginBean.loggedUser}" style="float: left; font-size: 12px"/>
+                <p:outputLabel value="#{msg.systemName} " style="float: left; margin-left: 42%"/>
+                <p:outputLabel value="#{msg.systemVersion}" style="float: right"/>
             </div>
         </footer>
 
