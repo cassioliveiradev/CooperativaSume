@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/head.xhtml"> 
+
+    <ui:define name="content">
+
+        <h:form id="searchsuplierForm">
+
+            <p:growl autoUpdate="true"/>
+
+            <p:fieldset legend="#{(msg.searchCadastre).concat(msg.suplier)}" >
+                <p:toolbar>
+                    <f:facet name="right">
+                        <p:button outcome="/fornecedor/CadastroFornecedor" value="#{msg.newRegisterButton}" style="text-align: right"/>
+                    </f:facet>
+                </p:toolbar>    
+
+                <p:dataTable id="datatablesuplier" var="suplier" value="#{suplierBean.supliers}"
+                             paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" widgetVar="suplierSearch"
+                             emptyMessage="#{msg.noRegistersFound}" paginator="true" paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20,50,100"
+                             scrollable="true" scrollRows="10" scrollHeight="210">
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <p:inputText id="globalFilter" onkeyup="PF('suplierSearch').filter()" style="width:300px" placeholder="#{msg.searchAnyField}"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column headerText="CNPJ" filterMatchMode="contains" width="2%" filterStyle="display:none"
+                              filterBy="#{suplier.cnpj}">
+                        <h:outputText value="#{suplier.cnpj}"  style="text-align: left"/>
+                    </p:column>
+                    
+                    <p:column headerText="Nome" filterMatchMode="contains" width="70" filterStyle="display:none"
+                              filterBy="#{suplier.name}">
+                        <h:outputText value="#{suplier.name}"  style="text-align: left"/>
+                    </p:column>
+                    
+                    <p:column headerText="E-mail" filterMatchMode="contains" width="50" filterStyle="display:none"
+                              filterBy="#{suplier.email}">
+                        <h:outputText value="#{suplier.email}"  style="text-align: left"/>
+                    </p:column>
+                    
+                    <p:column headerText="Telefone" filterMatchMode="contains" width="20" filterStyle="display:none"
+                              filterBy="#{suplier.phone1}">
+                        <h:outputText value="#{suplier.phone1}"  style="text-align: left"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg.actions}" style="text-align: center" width="25">
+                        <p:button id="viewButton" title="#{msg.view}" icon="ui-icon ui-icon-extlink" style="font-size: 10px" outcome="/fornecedor/CadastroFornecedor">
+                            <f:param  name="suplier" value="#{suplier.id}"/>
+                            <p:tooltip for="viewButton" value="Visualiza detalhes da linha selecionada"/>
+                        </p:button>   
+
+                        <p:button id="editButton" title="#{msg.edit}" icon="ui-icon ui-icon-pencil" style="font-size: 10px" outcome="/fornecedor/CadastroFornecedor">
+                            <f:param  name="suplier" value="#{suplier.id}"/>
+                            <p:tooltip for="editButton" value="Edita dados da linha selecionada"/>
+                        </p:button>
+
+                        <p:commandButton id="deleteButton" title="#{msg.delete}" icon="ui-icon ui-icon-trash" style="font-size: 10px" 
+                                         action="#{suplierBean.remove}" process="@this" update="datatablesuplier">
+                            <f:setPropertyActionListener target="#{suplierBean.selectedSuplier}" value="#{suplier}"/>
+                            <p:tooltip for="deleteButton" value="Excluir a linha selecionada"/>
+                            <p:confirm icon="ui-icon-alert" header="#{msg.exclusionConfirmHeader}" message="#{msg.realyExclude}?"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+            </p:fieldset>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

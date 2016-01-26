@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="/WEB-INF/templates/head.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="suplier" value="#{suplierBean.suplier}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+
+        <h:form id="formCadastresuplier">
+
+            <p:growl autoUpdate="true"/>
+
+            <p:fieldset legend="Fornecedor">
+
+                <h:panelGrid columns="2">
+                    
+                    <p:outputLabel for="cnpj" value="CNPJ: "/>
+                    <p:inputText id="cnpj" value="#{suplierBean.suplier.cnpj}" maxlength="25"/>
+
+                    <p:outputLabel for="name" value="Nome: "/>
+                    <p:inputText id="name" value="#{suplierBean.suplier.name}" maxlength="70"/>
+                    
+                    <p:tabView> 
+                        <p:tab title="Contato">
+
+                            <p:outputLabel for="email" value="E-Mail: "/>
+                            <p:inputText id="email" value="#{suplierBean.suplier.email}" maxlength="50"/> 
+                            
+                            <p:outputLabel for="phone1" value="Telefone: "/>
+                            <p:inputText id="phone1" value="#{suplierBean.suplier.phone1}" maxlength="50"/>
+                    
+                            <p:outputLabel for="phone2" value="Telefone 2: "/>
+                            <p:inputText id="phone2" value="#{suplierBean.suplier.phone2}" maxlength="50"/>
+                            
+                        </p:tab>
+                        <p:tab title="Endereço">
+                            
+                            <p:outputLabel for="street" value="Endereço: "/>
+                            <p:inputText id="street" value="#{suplierBean.suplier.street}" maxlength="50"/>
+                    
+                            <p:outputLabel for="number" value="Número: "/>
+                            <p:inputText id="number" value="#{suplierBean.suplier.number}" maxlength="50"/>
+                    
+                            <p:outputLabel for="city" value="Cidade: "/>
+                            <p:inputText id="city" value="#{suplierBean.suplier.city}" maxlength="50"/>
+                    
+                            <p:outputLabel for="neighborhood" value="Bairro: "/>
+                            <p:inputText id="neighborhood" value="#{suplierBean.suplier.neighborhood}" maxlength="50"/>
+                    
+                            <p:outputLabel for="uf" value="Estado: "/>
+                            <p:inputText id="uf" value="#{suplierBean.suplier.uf}" maxlength="50"/>
+                    
+                            <p:outputLabel for="postalCode" value="CEP: "/>
+                            <p:inputText id="postalCode" value="#{suplierBean.suplier.postalCode}" maxlength="50"/>
+                    
+                            <p:outputLabel for="country" value="País: "/>
+                            <p:inputText id="country" value="#{suplierBean.suplier.country}" maxlength="50"/>
+                            
+                        </p:tab>
+                    </p:tabView>
+                        
+                </h:panelGrid>
+
+                <p:toolbar id="panelButtonsConsult" style="margin-top: 10px;">
+                    <f:facet name="left">
+                        <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
+                                         action="#{suplierBean.save}" id="saveButton" update="@form" 
+                                         rendered="#{suplierBean.editing ne true}"/>
+                    </f:facet>
+
+                    <f:facet name="right">
+                        <p:button value="#{suplierBean.editing ? 'Voltar' : 'Pesquisar fornecedores'}" id="searchRegister" outcome="/fornecedor/PesquisaFornecedor" 
+                                  icon="ui-icon ui-icon-pencil"/>
+                    </f:facet>
+                </p:toolbar> 
+            </p:fieldset>
+            <p:blockUI block="formCadastresuplier" trigger="saveButton">
+                <p:graphicImage library="images" name="loading.gif"/>
+                <br/>
+                #{msg.wait}...
+            </p:blockUI>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
