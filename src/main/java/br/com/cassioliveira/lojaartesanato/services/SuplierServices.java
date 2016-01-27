@@ -39,6 +39,17 @@ public class SuplierServices {
     public List<Suplier> findAll() {
         return suplierDao.findAll();
     }
+    
+    /**
+     * Método responsável por carregar a lista de todas as cidades da federação 
+     * através de uma consulta ao banco de dados.
+     * 
+     * @param codigoUF
+     * @return
+     */
+    public List<String> returnCities(int ufCode) {
+        return suplierDao.returnCities(ufCode);
+    }
 
     /**
      * Recebe o valor passado pelo método buscarPorCampo() para determinar a

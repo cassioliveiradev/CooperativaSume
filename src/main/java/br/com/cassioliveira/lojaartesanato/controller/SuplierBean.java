@@ -45,9 +45,12 @@ public class SuplierBean implements Serializable {
 
     @Getter
     private final List<Unit> units;
-    
+
     @Getter
-    private static transient List<States> uf = new ArrayList<>();
+    private transient List<States> uf = new ArrayList<>();
+
+    @Getter
+    private final transient List<String> cities = new ArrayList<>();
 
     public SuplierBean() {
         units = Arrays.asList(Unit.values());
@@ -63,11 +66,10 @@ public class SuplierBean implements Serializable {
         this.suplierServices.save(suplier);
         if (getEditing()) {
             FacesUtil.sucessMessage("Cadastro do fornecedor '" + suplier.getName() + "' atualizado com sucesso!");
-            FacesUtil.redirectTo("PesquisaFornecedor.xhtml");
         } else {
-            FacesUtil.sucessMessage("Cadastro do fornecedor " + suplier.getName() + " realizada com sucesso!");
-            FacesUtil.redirectTo("/LojaArtesanato/Home.xhtml");
+            FacesUtil.sucessMessage("Cadastro do fornecedor '" + suplier.getName() + "' realizada com sucesso!");
         }
+        FacesUtil.redirectTo("PesquisaFornecedor.xhtml");
         suplier = new Suplier();
     }
 
@@ -78,12 +80,27 @@ public class SuplierBean implements Serializable {
 
     /**
      * Metodo que verifica se o objeto esta nulo quando for recuperado. Se sim,
-     * refere-se a um novo cadastro, senao refere-se a um fornecedor a ser editado
+     * refere-se a um novo cadastro, senao refere-se a um fornecedor a ser
+     * editado
      *
      * @return
      */
     public boolean getEditing() {
         return this.suplier.getId() != null;
+    }
+
+    /**
+     * Método responsável por carregar uma lista com todas as cidades
+     * cadastradas. Esta lista será usada para preencher o respectivo campo de
+     * cidade na view.
+     */
+    public void loadCities() {
+        this.cities.clear();
+        if (suplier.getUf() != null) {
+            for (String cidadesFiltradas : suplierServices.returnCities(suplier.getUf().getCode())) {
+                this.cities.add(cidadesFiltradas);
+            }
+        }
     }
 
 }

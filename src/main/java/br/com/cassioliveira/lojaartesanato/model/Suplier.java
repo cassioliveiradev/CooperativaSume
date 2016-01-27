@@ -2,6 +2,7 @@ package br.com.cassioliveira.lojaartesanato.model;
 
 import br.com.cassioliveira.lojaartesanato.enumerations.States;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,8 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -35,7 +34,7 @@ public class Suplier implements Serializable {
     @Column(name = "suplier_name", nullable = false, length = 200)
     private String name;
 
-    @Column(name = "suplier_cnpj", length = 14, unique = true)
+    @Column(name = "suplier_cnpj", length = 14)
     private String cnpj;
 
     @Pattern(regexp = "^$|^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$",
@@ -53,40 +52,34 @@ public class Suplier implements Serializable {
     private States uf;
 
     @Size
-    @Min(0)
-    @Max(70)
     @Column(name = "suplier_address_neighborhood", length = 70)
     private String neighborhood;
 
     @Size
-    @Min(0)
-    @Max(7)
     @Column(name = "suplier_address_number", length = 7)
     private String number;
 
     @Size
-    @Min(0)
-    @Max(100)
     @Column(name = "suplier_address_city", length = 100)
     private String city;
 
     @Size
-    @Min(0)
-    @Max(50)
     @Column(name = "suplier_address_country", length = 50)
     private String country;
 
     @Size
-    @Min(0)
-    @Max(10)
     @Column(name = "suplier_address_postal_code", length = 10)
     private String postalCode;
 
-    @NotNull
-    @Column(name = "suplier_phone1", nullable = false)
+    @Column(name = "suplier_phone1")
     private String phone1;
 
     @Column(name = "suplier_phone2")
     private String phone2;
+
+    @PostConstruct
+    public void init() {
+        setCountry("Brasil");
+    }
 
 }

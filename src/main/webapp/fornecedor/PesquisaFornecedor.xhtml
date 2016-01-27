@@ -13,7 +13,7 @@
 
             <p:growl autoUpdate="true"/>
 
-            <p:fieldset legend="#{(msg.searchCadastre).concat(msg.suplier)}" >
+            <p:fieldset legend="Pesquisa de fornecedor" >
                 <p:toolbar>
                     <f:facet name="right">
                         <p:button outcome="/fornecedor/CadastroFornecedor" value="#{msg.newRegisterButton}" style="text-align: right"/>
@@ -33,9 +33,9 @@
                         </p:outputPanel>
                     </f:facet>
 
-                    <p:column headerText="CNPJ" filterMatchMode="contains" width="2%" filterStyle="display:none"
+                    <p:column headerText="CNPJ" filterMatchMode="contains" width="3%" filterStyle="display:none"
                               filterBy="#{suplier.cnpj}">
-                        <h:outputText value="#{suplier.cnpj}"  style="text-align: left"/>
+                        <h:outputText value="#{suplier.cnpj}"  style="text-align: left" converter="cnpjConverter"/>
                     </p:column>
                     
                     <p:column headerText="Nome" filterMatchMode="contains" width="70" filterStyle="display:none"
