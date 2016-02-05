@@ -5,6 +5,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     
+    <resource-ref>
+        <description>PostgreSQL DataSource</description>
+        <res-ref-name>jdbc/artesanato</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
@@ -22,7 +29,7 @@
         <param-value>true</param-value>
     </context-param>
     
-     <!-- Define the system's Primefaces default theme -->        
+    <!-- Define the system's Primefaces default theme -->        
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>bootstrap</param-value>
@@ -34,7 +41,7 @@
         <param-value>GMT-3</param-value>
     </context-param>
     
-     <!-- Apache Shiro configurations -->        
+    <!-- Apache Shiro configurations -->        
     <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>

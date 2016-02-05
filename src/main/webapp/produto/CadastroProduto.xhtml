@@ -17,14 +17,14 @@
 
             <p:growl autoUpdate="true"/>
 
-            <p:fieldset legend="#{productBean.editing ? (msg.editCadastre).concat(msg.product) : (msg.newRegister).concat(msg.product)}">
+            <p:fieldset legend="#{productBean.editing ? 'Atualizar produto' : 'Cadastrar produto'}">
 
                 <h:panelGrid columns="2">
                     
                     <p:outputLabel for="isPerishable" value="Perecível? "/>
                     <p:selectOneRadio id="isPerishable" value="#{productBean.product.perishable}">
-                        <f:selectItem id="yes" itemLabel="Sim"/>
-                        <f:selectItem id="no" itemLabel="Não"/>
+                        <f:selectItem id="yes" itemLabel="Sim" itemValue="true"/>
+                        <f:selectItem id="no" itemLabel="Não" itemValue="false"/>
                     </p:selectOneRadio>
                     
                     <p:outputLabel for="code" value="Código: "/>
@@ -68,8 +68,8 @@
                     </f:facet>
 
                     <f:facet name="right">
-                        <p:button value="Pesquisar produtos" id="searchRegister" outcome="/produto/PesquisaProduto" 
-                                  icon="ui-icon ui-icon-pencil"/>
+                         <p:button value="Cancelar" id="cancelRegister" outcome="/produto/PesquisaProduto" 
+                                  icon="ui-icon ui-icon-cancel"/>
                     </f:facet>
                 </p:toolbar> 
             </p:fieldset>

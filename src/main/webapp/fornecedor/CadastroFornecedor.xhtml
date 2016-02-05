@@ -27,39 +27,53 @@
 
                     <p:outputLabel for="name" value="Nome: " style="margin-left: 20px"/>
                     <p:inputText id="name" value="#{suplierBean.suplier.name}" maxlength="70" required="true" 
-                                 requiredMessage="É necessário informar um nome"/>
+                                 requiredMessage="É necessário informar um nome" size="44"/>
+
+                    <p:outputLabel for="typeSupply" value="Fornece: " style="margin-left: 20px"/>
+                    <p:inputTextarea id="typeSupply" value="#{suplierBean.suplier.typeSupply}" cols="47" 
+                                     autoResize="false" rows="3"/>
 
                 </h:panelGrid>
 
                 <p:tabView> 
                     <p:tab title="Contato">
                         <h:panelGrid columns="2">
-                            <p:outputLabel for="email" value="E-Mail: "/>
-                            <p:inputText id="email" value="#{suplierBean.suplier.email}" maxlength="50"/> 
-
                             <p:outputLabel for="phone1" value="Telefone: "/>
-                            <p:inputText id="phone1" value="#{suplierBean.suplier.phone1}" maxlength="50" styleClass="phone"/>
+                            <h:panelGroup>
+                                <p:inputText id="phone1" value="#{suplierBean.suplier.phone1}" styleClass="phone" size="14" style="margin-right: 4px"/>
+                                <p:outputLabel for="phone2" value="Tel. 2: "/>
+                                <p:inputText id="phone2" value="#{suplierBean.suplier.phone2}" styleClass="phone" size="14"/>
+                            </h:panelGroup>
+                            
+                            <p:outputLabel for="email" value="E-Mail: "/>
+                            <p:inputText id="email" value="#{suplierBean.suplier.email}" maxlength="50" size="43"/> 
 
-                            <p:outputLabel for="phone2" value="Telefone 2: "/>
-                            <p:inputText id="phone2" value="#{suplierBean.suplier.phone2}" maxlength="50" styleClass="phone"/>
+                            <p:outputLabel for="otherContact" value="Outro: "/>
+                            <p:inputTextarea id="otherContact" value="#{suplierBean.suplier.otherContact}" cols="46" 
+                                             autoResize="false" rows="3"/>
                         </h:panelGrid>
                     </p:tab>
 
                     <p:tab title="Endereço">
                         <h:panelGrid columns="2">
                             <p:outputLabel for="street" value="Endereço: "/>
-                            <p:inputText id="street" value="#{suplierBean.suplier.street}" maxlength="50"/>
-
-                            <p:outputLabel for="number" value="Número: "/>
-                            <p:inputText id="number" value="#{suplierBean.suplier.number}" maxlength="50"/>
-
+                            <h:panelGroup>
+                                <p:inputText id="street" value="#{suplierBean.suplier.street}" maxlength="50" size="32" style="margin-right: 1px"/>
+                                <p:inputText id="number" value="#{suplierBean.suplier.number}" maxlength="50" placeholder="Nº" style="width: 49px"/>
+                            </h:panelGroup>
 
                             <p:outputLabel for="neighborhood" value="Bairro: "/>
-                            <p:inputText id="neighborhood" value="#{suplierBean.suplier.neighborhood}" maxlength="50"/>
+                            <p:inputText id="neighborhood" value="#{suplierBean.suplier.neighborhood}" maxlength="50" size="42"/>
 
+                            <p:outputLabel for="country" value="País: "/>
+                            <h:panelGroup>
+                                <p:inputText id="country" value="#{suplierBean.suplier.country}" maxlength="50" size="20" style="margin-right: 3px"/>
+                                <p:outputLabel for="postalCode" value="CEP: "/>
+                                <p:inputMask id="postalCode" value="#{suplierBean.suplier.postalCode}" size="8" mask="99.999-999"/>
+                            </h:panelGroup>
 
                             <p:outputLabel for="uf" value="#{msg.state}: " />
-                            <p:selectOneMenu id="uf" value="#{suplierBean.suplier.uf}">
+                            <p:selectOneMenu id="uf" value="#{suplierBean.suplier.uf}" style="width: 162px">
                                 <p:ajax process="@this" event="change" update="city" listener="#{suplierBean.loadCities}"/>
                                 <f:selectItem itemLabel="#{msg.selectIt}..." noSelectionOption="true"/>
                                 <f:selectItems value="#{suplierBean.uf}" itemValue="#{uf}" itemLabel="#{uf.description}" var="uf"/>
@@ -72,24 +86,19 @@
                                 <f:selectItems value="#{suplierBean.cities}" itemValue="#{city}" itemLabel="#{city}" var="city"/>
                             </p:selectOneMenu>
 
-                            <p:outputLabel for="postalCode" value="CEP: "/>
-                            <p:inputText id="postalCode" value="#{suplierBean.suplier.postalCode}" maxlength="50"/>
-
-                            <p:outputLabel for="country" value="País: "/>
-                            <p:inputText id="country" value="#{suplierBean.suplier.country}" maxlength="50"/>
                         </h:panelGrid>
                     </p:tab>
                 </p:tabView>
 
-                <p:toolbar id="panelButtonsConsult" style="margin-top: 10px;">
+                <p:toolbar id="toolbarButtons" style="margin-top: 10px;">
                     <f:facet name="left">
                         <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
                                          action="#{suplierBean.save}" id="saveButton" update="@form"/>
                     </f:facet>
-
+                    
                     <f:facet name="right">
-                        <p:button value="Pesquisar fornecedores" id="searchRegister" outcome="/fornecedor/PesquisaFornecedor" 
-                                  icon="ui-icon ui-icon-pencil"/>
+                        <p:button value="Cancelar" id="cancelRegister" outcome="/fornecedor/PesquisaFornecedor" 
+                                  icon="ui-icon ui-icon-cancel"/>
                     </f:facet>
                 </p:toolbar> 
             </p:fieldset>

@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -36,6 +37,10 @@ public class Suplier implements Serializable {
 
     @Column(name = "suplier_cnpj", length = 14)
     private String cnpj;
+    
+    @Lob
+    @Column(name = "suplier_type_supply", length = 200)
+    private String typeSupply;    
 
     @Pattern(regexp = "^$|^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$",
             message = "E-mail com formato incorreto")
@@ -76,6 +81,9 @@ public class Suplier implements Serializable {
 
     @Column(name = "suplier_phone2")
     private String phone2;
+    
+    @Column(name = "suplier_other_contact")
+    private String otherContact;
 
     @PostConstruct
     public void init() {

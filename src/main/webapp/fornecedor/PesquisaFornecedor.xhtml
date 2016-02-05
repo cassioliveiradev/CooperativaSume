@@ -13,7 +13,7 @@
 
             <p:growl autoUpdate="true"/>
 
-            <p:fieldset legend="Pesquisa de fornecedor" >
+            <p:fieldset legend="Consultar fornecedor" >
                 <p:toolbar>
                     <f:facet name="right">
                         <p:button outcome="/fornecedor/CadastroFornecedor" value="#{msg.newRegisterButton}" style="text-align: right"/>
@@ -54,11 +54,6 @@
                     </p:column>
 
                     <p:column headerText="#{msg.actions}" style="text-align: center" width="25">
-                        <p:button id="viewButton" title="#{msg.view}" icon="ui-icon ui-icon-extlink" style="font-size: 10px" outcome="/fornecedor/CadastroFornecedor">
-                            <f:param  name="suplier" value="#{suplier.id}"/>
-                            <p:tooltip for="viewButton" value="Visualiza detalhes da linha selecionada"/>
-                        </p:button>   
-
                         <p:button id="editButton" title="#{msg.edit}" icon="ui-icon ui-icon-pencil" style="font-size: 10px" outcome="/fornecedor/CadastroFornecedor">
                             <f:param  name="suplier" value="#{suplier.id}"/>
                             <p:tooltip for="editButton" value="Edita dados da linha selecionada"/>

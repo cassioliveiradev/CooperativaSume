@@ -51,6 +51,10 @@ public class SuplierBean implements Serializable {
 
     @Getter
     private final transient List<String> cities = new ArrayList<>();
+    
+    @Getter
+    @Setter
+    private boolean editable;
 
     public SuplierBean() {
         units = Arrays.asList(Unit.values());

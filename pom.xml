@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.cassioliveira</groupId>
-    <artifactId>LojaArtesanato</artifactId>
+    <artifactId>CooperativaSume</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>LojaArtesanato</name>
+    <name>CooperativaSume</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

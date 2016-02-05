@@ -13,7 +13,7 @@
 
             <p:growl autoUpdate="true"/>
 
-            <p:fieldset legend="#{(msg.searchCadastre).concat(msg.product)}" >
+            <p:fieldset legend="Consultar produtos" >
                 <p:toolbar>
                     <f:facet name="right">
                         <p:button outcome="/produto/CadastroProduto" value="#{msg.newRegisterButton}" style="text-align: right"/>
@@ -33,7 +33,7 @@
                         </p:outputPanel>
                     </f:facet>
 
-                    <p:column headerText="Código" filterMatchMode="contains" width="2%" filterStyle="display:none"
+                    <p:column headerText="Código" filterMatchMode="contains" width="3%" filterStyle="display:none"
                               filterBy="#{product.code}">
                         <h:outputText value="#{product.code}"  style="text-align: left"/>
                     </p:column>
