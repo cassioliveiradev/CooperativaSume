@@ -24,6 +24,8 @@ public class SuplierServices {
     @Transactional
     public void save(Suplier suplier) throws GenericException {
         this.suplierDao.save(suplier);
+        
+        System.out.println("################ SERVICE");
     }
 
     @Transactional
@@ -44,11 +46,15 @@ public class SuplierServices {
      * Método responsável por carregar a lista de todas as cidades da federação 
      * através de uma consulta ao banco de dados.
      * 
-     * @param codigoUF
+     * @param ufCode
      * @return
      */
     public List<String> returnCities(int ufCode) {
         return suplierDao.returnCities(ufCode);
+    }
+    
+    public List<Suplier> findByUser(String user) {
+        return suplierDao.findByUser(user);
     }
 
     /**

@@ -14,6 +14,17 @@ public class SuplierDao extends AbstractDao<Suplier> implements Serializable {
     public SuplierDao() {
         super(Suplier.class);
     }
+    
+    public List<Suplier> findByUser(String user) {
+        Query createQuery;
+        createQuery = getEntityManager().createQuery("FROM Suplier s WHERE s.userName = :userName", Suplier.class);
+        createQuery.setParameter("userName", user);
+        return createQuery.getResultList();
+    }
+    
+//    public List<Suplier> findByUser(String user) {
+//        return getEntityManager().createNamedQuery("Suplier.registeredByUser", Suplier.class).setParameter("userName", user).getResultList();
+//    }
 
     /**
      * Método responsável por retornar a lista de cidades brasileiras. Carrega a

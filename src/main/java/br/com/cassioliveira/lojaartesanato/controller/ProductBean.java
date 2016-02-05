@@ -87,8 +87,8 @@ public class ProductBean implements Serializable {
         return this.product.getId() != null;
     }
 
-    public void getFindByUser() {
-        productServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
-    }
+//    public void getFindByUser() {
+//        productServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
+//    }
 
 }

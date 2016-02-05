@@ -11,10 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import org.apache.shiro.SecurityUtils;
 
 /**
  *
@@ -22,6 +25,9 @@ import lombok.Data;
  */
 @Entity
 @Data
+@NamedQueries({
+    @NamedQuery(name = "Suplier.registeredByUser",
+            query = "FROM Suplier s WHERE s.userName = :userName"),})
 public class Suplier implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -84,10 +90,14 @@ public class Suplier implements Serializable {
     
     @Column(name = "suplier_other_contact")
     private String otherContact;
+    
+    @Column(name = "suplier_associated_user_name")
+    private String userName;
 
     @PostConstruct
     public void init() {
         setCountry("Brasil");
+        setUserName((String) SecurityUtils.getSubject().getPrincipal());
     }
 
 }

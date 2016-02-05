@@ -15,6 +15,7 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.shiro.SecurityUtils;
 
 /**
  *
@@ -42,6 +43,9 @@ public class SuplierBean implements Serializable {
 
     @Getter
     private List<Suplier> supliers;
+    
+    @Getter
+    private List<Suplier> supliersByUsers;
 
     @Getter
     private final List<Unit> units;
@@ -55,6 +59,8 @@ public class SuplierBean implements Serializable {
     @Getter
     @Setter
     private boolean editable;
+    
+    private final String LOGGED_USER = (String) SecurityUtils.getSubject().getPrincipal();
 
     public SuplierBean() {
         units = Arrays.asList(Unit.values());
@@ -63,11 +69,13 @@ public class SuplierBean implements Serializable {
 
     @PostConstruct
     public void init() {
+        this.supliersByUsers = suplierServices.findByUser(LOGGED_USER);
         this.supliers = suplierServices.findAll();
     }
 
     public void save() throws GenericException {
         this.suplierServices.save(suplier);
+        System.out.println("################ BEAN");
         if (getEditing()) {
             FacesUtil.sucessMessage("Cadastro do fornecedor '" + suplier.getName() + "' atualizado com sucesso!");
         } else {
@@ -106,5 +114,9 @@ public class SuplierBean implements Serializable {
             }
         }
     }
+    
+//    public void getFindByUser() {
+//        suplierServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
+//    }
 
 }

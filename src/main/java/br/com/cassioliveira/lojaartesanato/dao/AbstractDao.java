@@ -55,6 +55,8 @@ public abstract class AbstractDao<T> implements Serializable {
      */
     public void save(T entity) {
         entityManager.merge(entity);
+        
+        System.out.println("################ BEAN");
     }
 
     /**
