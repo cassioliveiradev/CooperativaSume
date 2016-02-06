@@ -56,10 +56,6 @@ public class SuplierBean implements Serializable {
     @Getter
     private final transient List<String> cities = new ArrayList<>();
     
-    @Getter
-    @Setter
-    private boolean editable;
-    
     private final String LOGGED_USER = (String) SecurityUtils.getSubject().getPrincipal();
 
     public SuplierBean() {
@@ -114,9 +110,4 @@ public class SuplierBean implements Serializable {
             }
         }
     }
-    
-//    public void getFindByUser() {
-//        suplierServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
-//    }
-
 }

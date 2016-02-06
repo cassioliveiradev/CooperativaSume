@@ -41,6 +41,9 @@ public class ProductBean implements Serializable {
 
     @Getter
     private List<Product> products;
+    
+    @Getter
+    private List<Product> productsByUsers;
 
     @Getter
     private final List<Unit> units;
@@ -48,7 +51,7 @@ public class ProductBean implements Serializable {
     @Getter
     private List<String> categories;
 
-    private final String loggedUser = (String) SecurityUtils.getSubject().getPrincipal();
+    private final String LOGGED_USER = (String) SecurityUtils.getSubject().getPrincipal();
 
     public ProductBean() {
         units = Arrays.asList(Unit.values());
@@ -56,8 +59,10 @@ public class ProductBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        this.products = productServices.findByUser(this.loggedUser);
+        this.productsByUsers = productServices.findByUser(this.LOGGED_USER);
         this.categories = productServices.getCategories();
+        this.products = productServices.findAll();
+        
     }
 
     public void save() throws GenericException {
@@ -86,9 +91,4 @@ public class ProductBean implements Serializable {
     public boolean getEditing() {
         return this.product.getId() != null;
     }
-
-//    public void getFindByUser() {
-//        productServices.findByUser((String) SecurityUtils.getSubject().getPrincipal());
-//    }
-
 }

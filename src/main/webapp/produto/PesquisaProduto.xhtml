@@ -20,7 +20,7 @@
                     </f:facet>
                 </p:toolbar>    
 
-                <p:dataTable id="datatableproduct" var="product" value="#{productBean.products}"
+                <p:dataTable id="datatableproduct" var="product" value="#{productBean.productsByUsers}"
                              paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" widgetVar="productSearch"
                              emptyMessage="#{msg.noRegistersFound}" paginator="true" paginatorPosition="bottom"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
