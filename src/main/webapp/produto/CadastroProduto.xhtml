@@ -34,7 +34,8 @@
                     <p:inputText id="barCode" value="#{productBean.product.barCode}" maxlength="50"/>
 
                     <p:outputLabel for="description" value="Descrição: "/>
-                    <p:inputText id="description" value="#{productBean.product.description}" maxlength="70"/>
+                    <p:inputText id="description" value="#{productBean.product.description}" maxlength="70" required="true"
+                                 requiredMessage="É necessário informar um nome para o produto."/>
 
                     <p:outputLabel for="category" value="Categoria: "/>
                     <p:selectOneMenu id="category" value="#{productBean.product.category}" editable="true" filter="true" 
@@ -57,7 +58,7 @@
                     <p:outputLabel for="expirationDate" value="Validade: "/>
                     <p:calendar id="expirationDate" value="#{productBean.product.expirationDate}"
                                 navigator="true" pattern="dd/MM/yyyy" locale="pt"
-                                mindate="#{dateTimeUtilBean.dateToday}"/>
+                                mindate="#{dateTimeUtilBean.dateToday}" mask="true" converterMessage="Informe uma data válida!"/>
 
                 </h:panelGrid>
 
