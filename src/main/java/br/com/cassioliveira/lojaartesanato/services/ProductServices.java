@@ -23,6 +23,9 @@ public class ProductServices {
 
     @Transactional
     public void save(Product product) throws GenericException {
+        if("".equals(product.getCategory()) || product.getCategory() == null){
+            product.setCategory("Sem categoria");
+        }
         this.productDao.save(product);
     }
 
@@ -41,7 +44,15 @@ public class ProductServices {
     }
 
     public List<String> getCategories() {
+        
         return productDao.getCategories();
+        
+//        List<String> categories;
+//        categories = productDao.getCategories();
+//        if(categories.contains(null)){
+//            categories.remove(null);
+//        }
+//        return categories;
     }
     
     public List<Product> findByUser(String user) {

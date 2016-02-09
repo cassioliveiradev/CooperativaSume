@@ -186,7 +186,7 @@ footer {
     margin: 10px;
     text-decoration: none;
     text-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
-    box-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
+    /*box-shadow:#000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;*/
 }
 
 .main-screen-button-image{
@@ -201,6 +201,10 @@ footer {
     font-weight: bold;
     font-size: 20px;
     vertical-align: text-bottom;
+}
+
+.container-home-button{
+    margin-top: -50px;
 }
 
 .home-button{

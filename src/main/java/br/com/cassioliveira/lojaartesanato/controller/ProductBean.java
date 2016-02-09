@@ -41,7 +41,7 @@ public class ProductBean implements Serializable {
 
     @Getter
     private List<Product> products;
-    
+
     @Getter
     private List<Product> productsByUsers;
 
@@ -60,9 +60,9 @@ public class ProductBean implements Serializable {
     @PostConstruct
     public void init() {
         this.productsByUsers = productServices.findByUser(this.LOGGED_USER);
-        this.categories = productServices.getCategories();
+        this.categories = productServices.getCategories(); //Consulta o banco e retorna as categorias cadastradas
         this.products = productServices.findAll();
-        
+
     }
 
     public void save() throws GenericException {
@@ -72,7 +72,7 @@ public class ProductBean implements Serializable {
         } else {
             FacesUtil.sucessMessage("Cadastro do produto " + product.getDescription() + " realizada com sucesso!");
         }
-        FacesUtil.redirectTo("PesquisaProduto.xhtml");
+//        FacesUtil.redirectTo("PesquisaProduto.xhtml");
         product = new Product();
     }
 
