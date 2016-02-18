@@ -10,6 +10,7 @@
         <res-ref-name>jdbc/artesanato</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
+        <lookup-name>java:app/jdbc/artesanato</lookup-name>
     </resource-ref>
     
     <context-param>
