@@ -71,7 +71,6 @@ public class SuplierBean implements Serializable {
 
     public void save() throws GenericException {
         this.suplierServices.save(suplier);
-        System.out.println("################ BEAN");
         if (getEditing()) {
             FacesUtil.sucessMessage("Cadastro do fornecedor '" + suplier.getName() + "' atualizado com sucesso!");
         } else {
@@ -83,6 +82,7 @@ public class SuplierBean implements Serializable {
 
     public void remove() throws GenericException {
         this.suplierServices.delete(selectedSuplier);
+        FacesUtil.redirectTo("PesquisaFornecedor.xhtml");
         FacesUtil.sucessMessage("Exclusão efetuada com sucesso!");
     }
 

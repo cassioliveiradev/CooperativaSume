@@ -17,7 +17,7 @@
 
             <p:growl autoUpdate="true"/>
 
-            <p:fieldset legend="Fornecedor">
+            <p:fieldset legend="Cadastro de fornecedor">
 
                 <h:panelGrid columns="2">
 
@@ -44,7 +44,7 @@
                                 <p:outputLabel for="phone2" value="Tel. 2: "/>
                                 <p:inputText id="phone2" value="#{suplierBean.suplier.phone2}" styleClass="phone" size="14"/>
                             </h:panelGroup>
-                            
+
                             <p:outputLabel for="email" value="E-Mail: "/>
                             <p:inputText id="email" value="#{suplierBean.suplier.email}" maxlength="50" size="43"/> 
 
@@ -95,7 +95,7 @@
                         <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
                                          action="#{suplierBean.save}" id="saveButton" update="@form"/>
                     </f:facet>
-                    
+
                     <f:facet name="right">
                         <p:button value="Cancelar" id="cancelRegister" outcome="/fornecedor/PesquisaFornecedor" 
                                   icon="ui-icon ui-icon-cancel"/>

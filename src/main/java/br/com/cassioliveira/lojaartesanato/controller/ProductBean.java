@@ -72,14 +72,14 @@ public class ProductBean implements Serializable {
         } else {
             FacesUtil.sucessMessage("Cadastro do produto " + product.getDescription() + " realizada com sucesso!");
         }
-//        FacesUtil.redirectTo("PesquisaProduto.xhtml");
+        FacesUtil.redirectTo("PesquisaProduto.xhtml");
         product = new Product();
     }
 
     public void remove() throws GenericException {
         this.productServices.delete(selectedProduct);
+        FacesUtil.redirectTo("PesquisaProduto.xhtml");
         FacesUtil.sucessMessage("Exclusão efetuada com sucesso!");
-        product = new Product();
     }
 
     /**
