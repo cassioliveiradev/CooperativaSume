@@ -63,6 +63,9 @@ public class Product implements Serializable {
 
     @Column(name = "product_price")
     private Double price;
+    
+    @Column(name = "product_quantity")
+    private int quantity;
 
     @Column(name = "product_is_perishable")
     private boolean perishable;

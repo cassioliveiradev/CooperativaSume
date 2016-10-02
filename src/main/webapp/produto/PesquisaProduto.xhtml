@@ -16,7 +16,7 @@
             <p:fieldset legend="Consultar produtos" >
                 <p:toolbar>
                     <f:facet name="right">
-                        <p:button outcome="/produto/CadastroProduto" value="#{msg.newRegisterButton}" style="text-align: right"/>
+                        <p:button outcome="/produto/CadastroProduto" value="Novo produto" style="text-align: right"/>
                     </f:facet>
                 </p:toolbar>    
 
@@ -33,23 +33,28 @@
                         </p:outputPanel>
                     </f:facet>
 
-                    <p:column headerText="Código" filterMatchMode="contains" width="0.5" filterStyle="display:none"
+                    <p:column headerText="Código" filterMatchMode="contains" width="0.1" filterStyle="display:none"
                               filterBy="#{product.code}">
                         <h:outputText value="#{product.code}"  style="text-align: left"/>
                     </p:column>
-                    
-                    <p:column headerText="Descrição" filterMatchMode="contains" width="120" filterStyle="display:none"
+
+                    <p:column headerText="Quantidade" filterMatchMode="contains" width="1.2" filterStyle="display:none"
+                              filterBy="#{product.quantity}">
+                        <h:outputText value="#{product.quantity}"  style="text-align: center"/>
+                    </p:column>
+
+                    <p:column headerText="Descrição" filterMatchMode="contains" width="110" filterStyle="display:none"
                               filterBy="#{product.description}">
                         <h:outputText value="#{product.description}"  style="text-align: left"/>
                     </p:column>
-                    
-                    <p:column headerText="Preço" filterMatchMode="contains" width="20" filterStyle="display:none"
+
+                    <p:column headerText="Preço" filterMatchMode="contains" width="15" filterStyle="display:none"
                               filterBy="#{product.price}">
                         <h:outputText value="#{product.price}"  style="text-align: center">
                             <f:convertNumber type="currency" locale="ptBR" currencySymbol="R$"/>
                         </h:outputText>
                     </p:column>
-                    
+
                     <p:column headerText="Validade" style="text-align: center" width="20" filterMatchMode="contains"
                               filterStyle="display:none" filterBy="#{product.expirationDate}">
                         <h:outputText value="#{product.expirationDate}">
@@ -58,21 +63,44 @@
                     </p:column>
 
                     <p:column headerText="#{msg.actions}" style="text-align: center" width="15">
+
+<!--                        <p:spinner id="quantitySell" size="1" min="0" />
+                        <p:commandButton value="OK" process="@this" update="@form" >
+                            <f:setPropertyActionListener target="#{productBean.selectedProduct}" value="#{product}"/>
+                        </p:commandButton>-->
+
+<!--                        <p:commandButton id="sellButton" title="#{msg.delete}" icon="fa fa-dollar" style="font-size: 14px" 
+                                         oncomplete="PF('productQuantity').show()" process="@this" update="@form">
+                            <p:tooltip for="sellButton" value="Vender o produto"/>
+                        </p:commandButton>-->
+
+                        <p:button id="sellButton" title="#{msg.edit}" icon="ui-icon ui-icon-cart" style="font-size: 10px" outcome="/produto/venda-produto">
+                            <f:param  name="product" value="#{product.id}"/>
+                            <p:tooltip for="sellButton" value="Vender produto"/>
+                        </p:button>
+
                         <p:button id="editButton" title="#{msg.edit}" icon="ui-icon ui-icon-pencil" style="font-size: 10px" outcome="/produto/CadastroProduto">
                             <f:param  name="product" value="#{product.id}"/>
-                            <p:tooltip for="editButton" value="Edita dados da linha selecionada"/>
+                            <p:tooltip for="editButton" value="Alterar informações do produto"/>
                         </p:button>
 
                         <p:commandButton id="deleteButton" title="#{msg.delete}" icon="ui-icon ui-icon-trash" style="font-size: 10px" 
                                          action="#{productBean.remove}" process="@this" update="@form">
                             <f:setPropertyActionListener target="#{productBean.selectedProduct}" value="#{product}"/>
-                            <p:tooltip for="deleteButton" value="Excluir a linha selecionada"/>
+                            <p:tooltip for="deleteButton" value="Excluir o produto"/>
                             <p:confirm icon="ui-icon-alert" header="#{msg.exclusionConfirmHeader}" message="#{msg.realyExclude}?"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
 
             </p:fieldset>
+
+            <p:dialog id="dialogQuantity" widgetVar="productQuantity" closable="true" closeOnEscape="true" responsive="true"
+                      resizable="false" modal="true" height="50" width="290">
+                <!--<p:outputLabel for="quantitySell" value="Quantidade: "/>-->
+                <p:spinner id="quantitySell" size="3"/>
+                <p:commandButton value="OK" style="margin-left: 5px"/>
+            </p:dialog>
 
         </h:form>
     </ui:define>

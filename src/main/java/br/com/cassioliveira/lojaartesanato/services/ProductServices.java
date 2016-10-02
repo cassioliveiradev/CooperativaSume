@@ -28,6 +28,19 @@ public class ProductServices {
         }
         this.productDao.save(product);
     }
+    
+    /**
+     * Método responsável por debitar a quantidade de produtos vendida
+     * da quantidade total de produtos e salvar o novo valor no banco.
+     * @param product
+     * @param quantitySell
+     * @throws GenericException 
+     */
+    @Transactional
+    public void sell(Product product, int quantitySell) throws GenericException {
+        product.setQuantity(product.getQuantity() - quantitySell);
+        this.productDao.save(product);
+    }
 
     @Transactional
     public void delete(Product product) throws GenericException {

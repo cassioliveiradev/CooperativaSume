@@ -26,20 +26,21 @@
                         <f:selectItem id="yes" itemLabel="Sim" itemValue="true"/>
                         <f:selectItem id="no" itemLabel="Não" itemValue="false"/>
                     </p:selectOneRadio>
-                    <p:outputLabel/>
-                    <p:outputLabel/>
+                    
+                    <p:outputLabel for="quantity" value="Quantidade: " style="margin-left: 5px"/>
+                    <p:inputText id="quantity" value="#{productBean.product.quantity}"/>
 
                     <p:outputLabel for="code" value="Código: "/>
                     <p:inputText id="code" value="#{productBean.product.code}" maxlength="25" size="11" style="margin-left: 15px"/>
 
-                    <p:outputLabel for="barCode" value="Código de barras: " style="margin-left: 5px"/>
+                    <p:outputLabel for="barCode" value="Código de barras: " style="margin-left: 5px; width: 130px"/>
                     <p:inputText id="barCode" value="#{productBean.product.barCode}" maxlength="50" />
                 </h:panelGrid>
 
                 <h:panelGrid columns="2">
                     <p:outputLabel for="description" value="Descrição: "/>
                     <p:inputText id="description" value="#{productBean.product.description}" maxlength="70" required="true"
-                                 requiredMessage="É necessário informar um nome para o produto." style="width: 385px"/>
+                                 requiredMessage="É necessário informar um nome para o produto." style="width: 403px"/>
 
                 </h:panelGrid>
 
@@ -47,25 +48,25 @@
                 <h:panelGrid columns="4">
                     <p:outputLabel for="category" value="Categoria: "/>
                     <p:selectOneMenu id="category" value="#{productBean.product.category}" editable="true" filter="true" 
-                                     filterMatchMode="contains" style="width: 161px; margin-left: 17px" label="Digite ou selecione">
+                                     filterMatchMode="contains" style="width: 135px; margin-left: 17px" label="Digite ou selecione">
                         <f:selectItems id="categories" value="#{productBean.categories}" var="category" itemLabel="#{category}" 
                                        itemValue="#{category}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="unity" value="Unidade: " style="margin-left: 5px"/>
-                    <p:selectOneMenu id="unity" value="#{productBean.product.unit}" style="width: 161px">
+                    <p:selectOneMenu id="unity" value="#{productBean.product.unit}" style="width: 149px">
                         <f:selectItems id="unitys" value="#{productBean.units}" var="unit" itemLabel="#{unit.description}" 
                                        itemValue="#{unit}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="price" value="Preço: "/>
-                    <p:inputText id="price" value="#{productBean.product.price}" styleClass="money" style="margin-left: 17px">
+                    <p:inputText id="price" value="#{productBean.product.price}" styleClass="money" style="width: 155px; margin-left: 17px">
                         <f:convertNumber type="currency" maxFractionDigits="2" pattern="#0.00" currencySymbol="R$"/>
                     </p:inputText>
 
                     <p:outputLabel for="expirationDate" value="Validade: " style="margin-left: 5px"/>
                     <p:calendar id="expirationDate" value="#{productBean.product.expirationDate}"
-                                navigator="true" pattern="dd/MM/yyyy" locale="pt"
+                                navigator="true" pattern="dd/MM/yyyy" locale="pt" 
                                 mindate="#{dateTimeUtilBean.dateToday}" mask="true" converterMessage="Informe uma data válida!"/>
                 </h:panelGrid>
 

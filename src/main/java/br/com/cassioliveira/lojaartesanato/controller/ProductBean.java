@@ -51,6 +51,10 @@ public class ProductBean implements Serializable {
     @Getter
     private List<String> categories;
 
+    @Getter
+    @Setter
+    private int quantitySell;
+
     private final String LOGGED_USER = (String) SecurityUtils.getSubject().getPrincipal();
 
     public ProductBean() {
@@ -90,5 +94,13 @@ public class ProductBean implements Serializable {
      */
     public boolean getEditing() {
         return this.product.getId() != null;
+    }
+
+    public void sell() {
+        productServices.sell(product, quantitySell);
+        if (quantitySell > 0) {
+            FacesUtil.sucessMessage("Venda de '" + product.getDescription() + "' realizada com sucesso!");
+        }
+        FacesUtil.redirectTo("PesquisaProduto.xhtml");
     }
 }

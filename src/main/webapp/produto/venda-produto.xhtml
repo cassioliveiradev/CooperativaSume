@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="/WEB-INF/templates/head.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="product" value="#{productBean.product}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+
+        <h:form id="formCadastreproduct">
+
+            <p:growl autoUpdate="true"/>
+
+            <p:fieldset legend="Baixa de produto">
+
+                <h:panelGrid columns="2">
+
+                    <p:outputLabel for="description" value="Descrição: "/>
+                    <p:outputLabel id="description" value="#{productBean.product.description}" 
+                                   style="font-weight: bold" styleClass="upper"/>
+
+                    <p:outputLabel for="price" value="Preço: "/>
+                    <h:outputText id="price" value="#{productBean.product.price}" styleClass="money" style="width: 155px">
+                       <f:convertNumber type="currency" locale="ptBR" currencySymbol="R$"/>
+                    </h:outputText>
+
+                    <p:outputLabel for="stock" value="Estoque: " />
+                    <p:outputLabel id="stock" value="#{productBean.product.quantity}"/>
+
+                </h:panelGrid>
+
+                <p:separator style="margin-top: 5px; margin-bottom: 5px"/>
+
+                <p:outputLabel for="quantity" value="Quantidade a vender: "/>
+                <p:spinner id="quantity" size="1" min="0" value="#{productBean.quantitySell}" max="#{productBean.product.quantity}"/>
+
+                <p:toolbar id="panelButtonsConsult" style="margin-top: 10px;">
+                    <f:facet name="left">
+                        <p:commandButton style="font-size: 13px;" value="#{msg.save}" icon="ui-icon ui-icon-disk" 
+                                         action="#{productBean.sell}" id="saveButton" update="@form"/>
+                    </f:facet>
+
+                    <f:facet name="right">
+                        <p:button value="Cancelar" id="cancelRegister" outcome="/produto/PesquisaProduto" 
+                                  icon="ui-icon ui-icon-cancel"/>
+                    </f:facet>
+                </p:toolbar> 
+            </p:fieldset>
+            <p:blockUI block="formCadastreproduct" trigger="saveButton">
+                <p:graphicImage library="images" name="loading.gif"/>
+                <br/>
+                #{msg.wait}...
+            </p:blockUI>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
